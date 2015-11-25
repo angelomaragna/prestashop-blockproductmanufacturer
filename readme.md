@@ -14,8 +14,8 @@ This module has been developed under and therefore is compatible with PrestaShop
 
 ##Installation
 
-**IMPORTANT**: to install this package you have to rename the folder _prestashop-blockmanufacturers_ to only _blockmanufacturers_.
-Copy the entire folder under your _PS_ROOT_DIR_/modules and then go to _Control panel_ > _Modules_. Search for "Block Manufacturers List" and click Install.
+**IMPORTANT**: to install this package you have to rename the folder _prestashop-blockproductmanufacturer_ to only _blockproductmanufacturer_.
+Copy the entire folder under your _PS_ROOT_DIR_/modules and then go to _Control panel_ > _Modules_. Search for "Block Product Manufacturer" and click Install.
 
 
 
