@@ -1,13 +1,13 @@
 # Prestashop Block Product Manufacturer
 
-This module displays info on the manufacturer of the product, within the product page.
+This module displays product manufacturer's information, within the product page.
 _Note: this project is still a work in progress._
 
 
 
 ##Requirements
 
-This module has been developed under and therefore is compatible with PrestaShop 1.6.1.0.
+This module has been developed under and therefore is compatible with PrestaShop 1.6.1.2.
 
 
 

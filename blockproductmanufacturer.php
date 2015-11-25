@@ -2,14 +2,14 @@
 if (!defined('_PS_VERSION_'))
     exit;
 
-class BlockManufacturers extends Module
+class BlockProductmanufacturer extends Module
 {
     /**
      * Setting default initialization values required by PrestaShop
      */
     public function __construct()
     {
-        $this->name = 'blockmanufacturers';
+        $this->name = 'blockproductmanufacturer';
         $this->tab = 'front_office_features';
         $this->version = '1.0.0';
         $this->author = 'Angelo Maragna';
@@ -19,31 +19,31 @@ class BlockManufacturers extends Module
 
         parent::__construct();
 
-        $this->displayName = $this->l('Block Manufacturers List');
-        $this->description = $this->l('This block displays a list of manufacturers.');
+        $this->displayName = $this->l('Block Product Manufacturer');
+        $this->description = $this->l('This module displays product manufacturer\'s information, within the product page.');
 
         $this->confirmUninstall = $this->l('Are you sure you want to uninstall?');
 
-        if (!Configuration::get('BLOCKMANUFACTURERS_NAME'))
+        if (!Configuration::get('BLOCKPRODUCTMANUFACTURER_NAME'))
             $this->warning = $this->l('No name provided');
     }
 
     /**
-     * Display the module content on the left column. Prepares the data and then calls
-     * views/templates/hook/blockmanufacturers.tpl
+     * Display the module content on displayFooterProduct hook, usually called right before the tabs
+     * views/templates/hook/blockproductmanufacturer.tpl
      *
      * @param $params
      * @return mixed
      */
-    public function hookDisplayLeftColumn($params)
+    public function hookDisplayFooterProduct($params)
     {
-
+        echo "it's working like a charm";
+        die();
         $current_manufacturer_id = 0;
 
-        if (Tools::getValue('id_product'))
+        if (Tools::getValue('id_manufacturer'))
         {
-            $product = new ProductCore(Tools::getValue('id_product'));
-            $current_manufacturer_id = $product->id_manufacturer;
+
         }
 
         if (Tools::getValue('id_manufacturer'))
@@ -71,7 +71,7 @@ class BlockManufacturers extends Module
             )
         );
 
-        return $this->display(__FILE__, 'blockmanufacturers.tpl');
+        return $this->display(__FILE__, 'blockproductmanufacturer.tpl');
     }
 
     /**
@@ -87,7 +87,7 @@ class BlockManufacturers extends Module
         if (!parent::install() ||
             !$this->registerHook('leftColumn') ||
             !$this->registerHook('header') ||
-            !Configuration::updateValue('BLOCKMANUFACTURERS_NAME', 'Block Manufacturers')
+            !Configuration::updateValue('BLOCKPRODUCTMANUFACTURER_NAME', 'Block Manufacturers')
         )
             return false;
 
@@ -101,7 +101,7 @@ class BlockManufacturers extends Module
     public function uninstall()
     {
         if (!parent::uninstall() ||
-            !Configuration::deleteByName('BLOCKMANUFACTURERS_NAME')
+            !Configuration::deleteByName('BLOCKPRODUCTMANUFACTURER_NAME')
         )
             return false;
 
