@@ -1,0 +1,29 @@
+#block_product_manufacturer .manufacturer_block {
+	display: block;
+	width: 100%;
+	min-height: 300px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center center;
+	text-align: right;
+}
+
+#block_product_manufacturer .content-wrapper {
+	max-width: 400px;
+	display: block;
+	text-align: left;
+	padding: 20px;
+	margin-left: auto;
+	margin-right: 0px;
+}
+
+#block_product_manufacturer .title {
+	color: #f1f1f1;
+	font-size: 150%;
+	padding-bottom: 5px;
+}
+
+#block_product_manufacturer .description {
+	color: #f1f1f1;
+	font-weight: 100;
+}

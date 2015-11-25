@@ -35,43 +35,41 @@ class BlockProductmanufacturer extends Module
      * @param $params
      * @return mixed
      */
-    public function hookDisplayFooterProduct($params)
+    public function hookProductFooter($params)
     {
-        echo "it's working like a charm";
-        die();
-        $current_manufacturer_id = 0;
 
-        if (Tools::getValue('id_manufacturer'))
-        {
+        $current_language_id = $this->context->language->id;
 
-        }
+        $current_manufacturer_id            = $params['product']->id_manufacturer;
+        $current_manufacturer_name          = $params['product']->manufacturer_name;
 
-        if (Tools::getValue('id_manufacturer'))
-        {
-            $current_manufacturer_id = Tools::getValue('id_manufacturer');
-        }
+        $manufacturer                       = new ManufacturerCore($current_manufacturer_id);
 
-        $manufacturers = ManufacturerCore::getManufacturers();
+        $current_manufacturer_description   = $manufacturer->short_description;
 
-        // assigning to each manufacturer his own shop url link
-        if (isset($manufacturers))
-        {
-            $link = new Link();
-            foreach ($manufacturers as $key => $manufacturer)
-            {
-                $manufacturer = new ManufacturerCore($manufacturer['id_manufacturer']);
-                $manufacturers[$key]['link'] = $link->getManufacturerLink($manufacturer);
-            }
-        }
+        $current_manufacturer_image         = $current_manufacturer_id.".jpg";
 
         $this->context->smarty->assign(
             array(
-                'manufacturers' => $manufacturers,
-                'current_manufacturer_id' => $current_manufacturer_id,
+                'current_manufacturer_id'           => $current_manufacturer_id,
+                'current_manufacturer_name'         => $current_manufacturer_name,
+                'current_manufacturer_description'  => $current_manufacturer_description[$current_language_id],
+                'current_manufacturer_image'        => $current_manufacturer_image,
             )
         );
 
         return $this->display(__FILE__, 'blockproductmanufacturer.tpl');
+    }
+
+    /**
+     * Adds the module css to the head section
+     *
+     * @param $params
+     * @return mixed
+     */
+    public function hookHeader($params)
+    {
+        $this->context->controller->addCSS(($this->_path).'blockproductmanufacturer.css', 'all');
     }
 
     /**
@@ -85,9 +83,9 @@ class BlockProductmanufacturer extends Module
 
 
         if (!parent::install() ||
-            !$this->registerHook('leftColumn') ||
+            !$this->registerHook('productfooter') ||
             !$this->registerHook('header') ||
-            !Configuration::updateValue('BLOCKPRODUCTMANUFACTURER_NAME', 'Block Manufacturers')
+            !Configuration::updateValue('BLOCKPRODUCTMANUFACTURER_NAME', 'Block Product Manufacturer')
         )
             return false;
 

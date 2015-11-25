@@ -1,7 +1,7 @@
 # Prestashop Block Product Manufacturer
 
 This module displays product manufacturer's information, within the product page.
-_Note: this project is still a work in progress._
+
 
 
 
@@ -15,7 +15,11 @@ This module has been developed under and therefore is compatible with PrestaShop
 ##Installation
 
 **IMPORTANT**: to install this package you have to rename the folder _prestashop-blockproductmanufacturer_ to only _blockproductmanufacturer_.
-Copy the entire folder under your _PS_ROOT_DIR_/modules and then go to _Control panel_ > _Modules_. Search for "Block Product Manufacturer" and click Install.
+These are the steps required to install:
+1. copy the entire folder under your _PS_ROOT_DIR_/modules
+2. go to _Control panel_ > _Modules_
+3. search for "Block Product Manufacturer"
+4. and click the Install button
 
 
 
